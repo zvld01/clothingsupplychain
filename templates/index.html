@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clothing Supply Chain</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="form">
+        <div class="title"><center>Clothing Supply Chain</center></div><br>
+        <div class="subtitle">Manage your products</div>
+
+        <div class="menu">
+            <button onclick="showForm('addProduct')">Add Product</button>
+            <button onclick="showForm('deleteProduct')">Delete Product</button>
+            <button onclick="showForm('addTransaction')">Add Transaction</button>
+            <button onclick="showForm('inventory')">Inventory</button>
+            <button onclick="showForm('productHistory')">Product History</button>
+        </div>
+
+        <div id="addProduct" class="form-section">
+            <div class="input-container">
+                <input id="addProductId" class="input" type="text" placeholder=" " name="product_id" />
+                <div class="cut"></div>
+                <label for="addProductId" class="placeholder">Product ID</label>
+            </div>
+            <div class="input-container">
+                <select id="addProductType" class="input" name="product_type">
+                    <option value="tshirt">T-Shirt ($40)</option>
+                    <option value="pants">Pants ($60)</option>
+                    <option value="shoes">Shoes ($120)</option>
+                </select>
+                <div class="cut cut-short"></div>
+                <label for="addProductType" class="placeholder">Product Type</label>
+            </div>
+            <button type="button" class="submit" onclick="addProduct()">Add Product</button>
+        </div>
+
+        <div id="deleteProduct" class="form-section" style="display: none;">
+            <div class="input-container">
+                <input id="deleteProductId" class="input" type="text" placeholder=" " name="product_id" />
+                <div class="cut"></div>
+                <label for="deleteProductId" class="placeholder">Product ID</label>
+            </div>
+            <button type="button" class="submit" onclick="deleteProduct()">Delete Product</button>
+        </div>
+
+        <div id="addTransaction" class="form-section" style="display: none;">
+            <div class="input-container">
+                <input id="transactionProductId" class="input" type="text" placeholder=" " name="product_id" />
+                <div class="cut"></div>
+                <label for="transactionProductId" class="placeholder">Product ID</label>
+            </div>
+            <div class="input-container">
+                <input id="transactionAction" class="input" type="text" placeholder=" " name="action" />
+                <div class="cut"></div>
+                <label for="transactionAction" class="placeholder">Action</label>
+            </div>
+            <div class="input-container">
+                <input id="transactionUser" class="input" type="text" placeholder=" " name="user" />
+                <div class="cut"></div>
+                <label for="transactionUser" class="placeholder">User</label>
+            </div>
+            <button type="button" class="submit" onclick="addTransaction()">Add Transaction</button>
+        </div>
+
+        <div id="inventory" class="response" style="display: none;">
+            <button onclick="viewInventory()" class="submit">View Inventory</button><br><br>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product ID</th>
+                        <th>Details</th>
+                        <th>Status</th>
+                        <th>Signature</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div id="productHistory" class="response">
+            <form id="getProductHistoryForm" class="form-section" style="display: block;">
+                <div class="input-container">
+                    <input id="historyProductId" class="input" type="text" placeholder=" " name="product_id">
+                    <div class="cut"></div>
+                    <label for="historyProductId" class="placeholder">Product ID</label>
+                </div>
+                <button type="submit" class="submit">Get History</button><br><br>
+            </form>
+            <table style="display: none;">
+                <thead>
+                    <tr>
+                        <th>Timestamp</th>
+                        <th>Action</th>
+                        <th>User</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        
+     
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
