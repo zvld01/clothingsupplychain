@@ -8,6 +8,7 @@ from Crypto.Hash import SHA256
 
 app = Flask(__name__)
 
+#Zaid
 class Block:
     def __init__(self, index: int, transactions: List[Dict], timestamp: float, previous_hash: str):
         self.index = index
@@ -106,6 +107,7 @@ class Blockchain:
 
 blockchain = Blockchain()
 
+#Dhruv
 @app.route('/')
 def index():
     return render_template('index.html')
